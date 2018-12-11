@@ -27,12 +27,17 @@ class Wizard extends React.Component {
     return (
       <div className="card">
         <div className="card-body">{children[this.state.counter]}</div>
+      
       <div className="card-footer">
       <div style={{float:'right'}}>
-          <button className="btn btn-danger" onClick={this._onPre}>Prev</button>
-      
-          <button className="btn btn-primary" onClick={this._onNext}>Next</button>
+      {
+       this.state.counter>0 ? <button className="btn btn-danger" onClick={this._onPre}>Prev</button>:''
+      }
+      {
+            this.state.counter<children.length-1?  <button className="btn btn-primary" onClick={this._onNext}>Next</button>:''
+      }
     </div>
+
 
 
       </div>
@@ -47,12 +52,9 @@ function App() {
   return (
     <div className="App">
       <Wizard>
-
         <h1>First</h1>
         <h1>Second</h1>
         <h1>Third</h1>
-
-
       </Wizard>
     </div>
   );
